@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import ArrowFillButton from "@/components/ui/arrow-fill-button";
+import BookingCta from "@/components/ui/BookingCta";
 import { vehicles } from "@/data/vehicles";
 import { buildWhatsappUrl } from "@/config/business";
 
@@ -111,21 +112,13 @@ export default function FleetPage() {
         </section>
       ))}
 
-      <section className="bg-lichen text-slag py-16 text-center">
-        <div className="container-edit">
-          <p className="text-sm text-slag/80 max-w-xl mx-auto">
-            Toll, parking and state permit charges are extra on outstation and one-way trips, based on
-            actual bills and slips. See the full breakdown on the tariffs page.
-          </p>
-          <ArrowFillButton
-            href="/tariffs"
-            btnText="View All Tariffs"
-            size="compact"
-            className="mt-6"
-            variant="solidDark"
-          />
-        </div>
-      </section>
+      <BookingCta
+        heading="Ready To Book Your Vehicle?"
+        subtitle="Toll, parking and state permit charges are extra on outstation and one-way trips, based on actual bills and slips. See the full breakdown on the tariffs page."
+        whatsappMessage="Hello, I would like to enquire about booking a vehicle with Badiger Tours & Travels."
+        secondaryHref="/tariffs"
+        secondaryText="View All Tariffs"
+      />
     </>
   );
 }

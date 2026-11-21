@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPinned, Repeat2, Navigation2, Clock } from "lucide-react";
-import FaqAccordion from "@/components/ui/FaqAccordion";
+import FaqSection from "@/components/ui/FaqSection";
 import FleetFilter from "@/components/fleet/FleetFilter";
 import HowItWorksTimeline from "@/components/ui/HowItWorksTimeline";
 import ReviewsCarousel from "@/components/ui/ReviewsCarousel";
@@ -370,11 +370,14 @@ export default function HomePage() {
 
       {/* FAQ */}
       <section className="bg-white py-20" id="faq">
-        <div className="container-edit max-w-3xl">
-          <h2 className="font-oswald uppercase font-bold text-slag text-2xl sm:text-4xl text-center mb-10">
-            Common Questions, Answered.
-          </h2>
-          <FaqAccordion items={homeFaqs} />
+        <div className="container-edit">
+          <FaqSection
+            heading="Common Questions, Answered."
+            subtitle="What travellers usually ask before booking. If yours isn't here, message us and we'll answer directly."
+            items={homeFaqs}
+            whatsappMessage="Hello, I have a question before booking with Badiger Tours & Travels."
+            tone="dark"
+          />
         </div>
       </section>
 

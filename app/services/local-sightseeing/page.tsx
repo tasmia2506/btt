@@ -3,12 +3,11 @@ import type { Metadata } from "next";
 import { Clock, Route, Car, ShieldAlert } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import PricingTable from "@/components/pricing/PricingTable";
-import FaqAccordion from "@/components/ui/FaqAccordion";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
-import FaqSchema from "@/components/seo/FaqSchema";
 import InfoPills from "@/components/ui/InfoPills";
 import HighlightGrid from "@/components/ui/HighlightGrid";
 import BookingCta from "@/components/ui/BookingCta";
+import FaqSection from "@/components/ui/FaqSection";
 import { vehicles } from "@/data/vehicles";
 import { localSightseeingFaqs } from "@/data/faqs";
 
@@ -95,9 +94,13 @@ export default function LocalSightseeingPage() {
 
       <section className="bg-slag text-ice py-16">
         <div className="container-edit">
-          <h2 className="font-oswald uppercase font-bold text-2xl mb-6">Frequently Asked Questions</h2>
-          <FaqAccordion items={localSightseeingFaqs} />
-          <FaqSchema items={localSightseeingFaqs} />
+          <FaqSection
+            heading="Frequently Asked Questions"
+            subtitle="What travellers usually ask about local sightseeing packages. If yours isn't here, message us directly."
+            items={localSightseeingFaqs}
+            whatsappMessage="Hello, I have a question about the local sightseeing package with Badiger Tours & Travels."
+            tone="light"
+          />
         </div>
       </section>
 
