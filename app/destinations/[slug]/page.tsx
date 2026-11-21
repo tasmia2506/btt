@@ -8,6 +8,7 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import InfoPills from "@/components/ui/InfoPills";
 import HighlightGrid from "@/components/ui/HighlightGrid";
 import BookingCta from "@/components/ui/BookingCta";
+import Reveal from "@/components/ui/Reveal";
 import { Badge } from "@/components/ui/badge";
 import { destinations, getDestination } from "@/data/destinations";
 import { vehicles } from "@/data/vehicles";
@@ -68,7 +69,7 @@ export default async function DestinationDetailPage({
       {/* TRIP PACKAGE PANEL */}
       <section className="bg-ice py-16">
         <div className="container-edit">
-          <div className="grid lg:grid-cols-[1fr_340px] gap-5 items-stretch">
+          <Reveal className="grid lg:grid-cols-[1fr_340px] gap-5 items-stretch">
             <div className="bg-white border border-stone/15 rounded-2xl p-7 sm:p-9">
               <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-5">Trip Snapshot</p>
               <div className="mb-8">
@@ -112,17 +113,17 @@ export default async function DestinationDetailPage({
                 </Badge>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="bg-white py-16">
         <div className="container-edit grid lg:grid-cols-2 gap-10">
-          <div>
+          <Reveal>
             <h2 className="font-oswald uppercase font-bold text-slag text-2xl mb-4">About {destination.name}</h2>
             <p className="text-slag/75 text-sm sm:text-base">{destination.blurb}</p>
-          </div>
-          <div>
+          </Reveal>
+          <Reveal delay={0.1}>
             <h2 className="font-oswald uppercase font-bold text-slag text-2xl mb-4">Suggested Itinerary</h2>
             <ul className="space-y-3">
               {destination.itinerary.map((line) => (
@@ -135,29 +136,30 @@ export default async function DestinationDetailPage({
               This itinerary is a suggestion only. Hotels, meals and sightseeing tickets are not included
               in the cab fare.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* TOP PLACES TO VISIT */}
       <section className="bg-ice py-16">
         <div className="container-edit">
-          <h2 className="font-oswald uppercase font-bold text-slag text-2xl mb-8">
-            Top Places To Visit In {destination.name}
-          </h2>
+          <Reveal>
+            <h2 className="font-oswald uppercase font-bold text-slag text-2xl mb-8">
+              Top Places To Visit In {destination.name}
+            </h2>
+          </Reveal>
           <div className="grid sm:grid-cols-2 gap-4">
             {destination.placesToVisit.map((place, i) => (
-              <div
-                key={place}
-                className="flex items-center gap-4 bg-white border border-stone/15 rounded-lg px-5 py-4"
-              >
-                <span className="shrink-0 w-9 h-9 rounded-full bg-slag text-lichen flex items-center justify-center font-oswald font-bold text-sm">
-                  {i + 1}
-                </span>
-                <span className="font-oswald uppercase font-semibold text-slag flex items-center gap-2">
-                  <MapPin size={14} className="text-moss shrink-0" /> {place}
-                </span>
-              </div>
+              <Reveal key={place} delay={(i % 2) * 0.08}>
+                <div className="flex items-center gap-4 bg-white border border-stone/15 rounded-lg px-5 py-4">
+                  <span className="shrink-0 w-9 h-9 rounded-full bg-slag text-lichen flex items-center justify-center font-oswald font-bold text-sm">
+                    {i + 1}
+                  </span>
+                  <span className="font-oswald uppercase font-semibold text-slag flex items-center gap-2">
+                    <MapPin size={14} className="text-moss shrink-0" /> {place}
+                  </span>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -165,18 +167,21 @@ export default async function DestinationDetailPage({
 
       <section className="bg-slag text-ice py-16">
         <div className="container-edit">
-          <h2 className="font-oswald uppercase font-bold text-2xl mb-8">Vehicle Options</h2>
+          <Reveal>
+            <h2 className="font-oswald uppercase font-bold text-2xl mb-8">Vehicle Options</h2>
+          </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {vehicles.map((v) => (
-              <Link
-                key={v.slug}
-                href={`/fleet#${v.slug}`}
-                className="relative h-44 group overflow-hidden block rounded-lg"
-              >
-                <Image src={v.image} alt={v.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slag/90 to-transparent" />
-                <p className="absolute bottom-3 left-3 font-oswald uppercase font-bold">{v.name}</p>
-              </Link>
+            {vehicles.map((v, i) => (
+              <Reveal key={v.slug} delay={i * 0.08}>
+                <Link
+                  href={`/fleet#${v.slug}`}
+                  className="relative h-44 group overflow-hidden block rounded-lg"
+                >
+                  <Image src={v.image} alt={v.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slag/90 to-transparent" />
+                  <p className="absolute bottom-3 left-3 font-oswald uppercase font-bold">{v.name}</p>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>

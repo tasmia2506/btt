@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPinned, Repeat2, Navigation2, Clock } from "lucide-react";
 import FaqSection from "@/components/ui/FaqSection";
+import Reveal from "@/components/ui/Reveal";
 import FleetFilter from "@/components/fleet/FleetFilter";
 import HowItWorksTimeline from "@/components/ui/HowItWorksTimeline";
 import ReviewsCarousel from "@/components/ui/ReviewsCarousel";
@@ -103,29 +104,33 @@ export default function HomePage() {
       {/* FLEET */}
       <section className="bg-ice py-20" id="fleet">
         <div className="container-edit">
-          <div className="flex flex-wrap items-end justify-between gap-4 mb-3">
-            <div>
-              <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-2">
-                Well-Maintained Fleet
-              </p>
-              <h2 className="font-oswald uppercase font-bold text-slag text-2xl sm:text-4xl">
-                Which Vehicle Suits <span className="text-moss">Your Trip?</span>
-              </h2>
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-4 mb-3">
+              <div>
+                <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-2">
+                  Well-Maintained Fleet
+                </p>
+                <h2 className="font-oswald uppercase font-bold text-slag text-2xl sm:text-4xl">
+                  Which Vehicle Suits <span className="text-moss">Your Trip?</span>
+                </h2>
+              </div>
+              <ArrowFillButton href="/fleet" btnText="View Full Fleet" size="compact" variant="solidDark" />
             </div>
-            <ArrowFillButton href="/fleet" btnText="View Full Fleet" size="compact" variant="solidDark" />
-          </div>
-          <p className="text-sm text-slag/70 max-w-2xl mb-10">
-            Choose from sedans for everyday trips or an MPV for more space — every vehicle comes with a
-            driver and clearly published local, outstation and one-way rates.
-          </p>
-          <FleetFilter />
+            <p className="text-sm text-slag/70 max-w-2xl mb-10">
+              Choose from sedans for everyday trips or an MPV for more space — every vehicle comes with a
+              driver and clearly published local, outstation and one-way rates.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <FleetFilter />
+          </Reveal>
         </div>
       </section>
 
       {/* FEATURE BLOCK — OUTSTATION & ONE-WAY */}
       <section className="bg-slag text-ice py-20">
         <div className="container-edit grid lg:grid-cols-2 gap-12 items-center">
-          <div>
+          <Reveal>
             <h2 className="font-oswald uppercase font-bold text-[clamp(1.75rem,4vw,3rem)] mb-5">
               Outstation &amp; One-Way, Priced Upfront.
             </h2>
@@ -154,31 +159,35 @@ export default function HomePage() {
                 variant="outlineLight"
               />
             </div>
-          </div>
+          </Reveal>
 
-          <div className="relative w-full aspect-[1182/887] border border-ice/20">
-            <Image
-              src="/images/tariffs.jpeg"
-              alt="Badiger Tours and Travels cab service poster"
-              fill
-              className="object-cover"
-            />
-          </div>
+          <Reveal delay={0.1}>
+            <div className="relative w-full aspect-[1182/887] border border-ice/20">
+              <Image
+                src="/images/tariffs.jpeg"
+                alt="Badiger Tours and Travels cab service poster"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ABOUT / COMPANY BLOCK */}
       <section className="bg-white py-20">
         <div className="container-edit grid lg:grid-cols-2 gap-12 items-center">
-          <div className="relative w-full aspect-[887/946] order-2 lg:order-1 border border-stone/20">
-            <Image
-              src="/images/about-us.jpeg"
-              alt="Badiger Tours and Travels — Bengaluru"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="order-1 lg:order-2">
+          <Reveal className="order-2 lg:order-1">
+            <div className="relative w-full aspect-[887/946] border border-stone/20">
+              <Image
+                src="/images/about-us.jpeg"
+                alt="Badiger Tours and Travels — Bengaluru"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.1} className="order-1 lg:order-2">
             <h2 className="font-oswald uppercase font-bold text-slag text-[clamp(1.75rem,4vw,3rem)] mb-5">
               A Cab &amp; Travel Partner Based In Bengaluru.
             </h2>
@@ -212,29 +221,32 @@ export default function HomePage() {
                 variant="outlineDark"
               />
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* SERVICES */}
       <section className="bg-ice py-20" id="services">
         <div className="container-edit">
-          <div className="flex flex-wrap items-end justify-between gap-4 mb-3">
-            <div>
-              <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-2">
-                Tailored Transportation
-              </p>
-              <h2 className="font-oswald uppercase font-bold text-slag text-2xl sm:text-4xl">
-                Travel Services <span className="text-moss">Built Around You.</span>
-              </h2>
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-4 mb-3">
+              <div>
+                <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-2">
+                  Tailored Transportation
+                </p>
+                <h2 className="font-oswald uppercase font-bold text-slag text-2xl sm:text-4xl">
+                  Travel Services <span className="text-moss">Built Around You.</span>
+                </h2>
+              </div>
+              <ArrowFillButton href="/services" btnText="Explore All Services" size="compact" />
             </div>
-            <ArrowFillButton href="/services" btnText="Explore All Services" size="compact" />
-          </div>
+          </Reveal>
           <div className="grid lg:grid-cols-3 gap-6 mt-10">
             {services.map((s, i) => {
               const Icon = serviceIcons[s.slug] ?? MapPinned;
               return (
-                <Card key={s.slug} className="rounded-lg py-0 hover:border-lichen transition-colors group">
+                <Reveal key={s.slug} delay={i * 0.1}>
+                <Card className="rounded-lg py-0 hover:border-lichen transition-colors group">
                   <div className="relative h-56 sm:h-64">
                     <Image
                       src={serviceImages[s.slug]}
@@ -277,6 +289,7 @@ export default function HomePage() {
                     </div>
                   </CardContent>
                 </Card>
+                </Reveal>
               );
             })}
           </div>
@@ -286,31 +299,38 @@ export default function HomePage() {
       {/* HOW IT WORKS */}
       <section className="bg-slag text-ice py-20">
         <div className="container-edit text-center">
-          <h2 className="font-oswald uppercase font-bold text-2xl sm:text-4xl mb-14">
-            Book Your Trip In Three Steps.
-          </h2>
-          <HowItWorksTimeline />
+          <Reveal>
+            <h2 className="font-oswald uppercase font-bold text-2xl sm:text-4xl mb-14">
+              Book Your Trip In Three Steps.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <HowItWorksTimeline />
+          </Reveal>
         </div>
       </section>
 
       {/* DESTINATIONS */}
       <section className="bg-ice py-20" id="destinations">
         <div className="container-edit">
-          <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
-            <div>
-              <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-2">
-                Popular Getaways
-              </p>
-              <h2 className="font-oswald uppercase font-bold text-slag text-2xl sm:text-4xl">
-                Where Will You Go <span className="text-moss">Next?</span>
-              </h2>
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
+              <div>
+                <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-2">
+                  Popular Getaways
+                </p>
+                <h2 className="font-oswald uppercase font-bold text-slag text-2xl sm:text-4xl">
+                  Where Will You Go <span className="text-moss">Next?</span>
+                </h2>
+              </div>
+              <ArrowFillButton href="/destinations" btnText="View All Destinations" size="compact" />
             </div>
-            <ArrowFillButton href="/destinations" btnText="View All Destinations" size="compact" />
-          </div>
+          </Reveal>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {destinations.slice(0, 4).map((d) => (
-              <Link key={d.slug} href={`/destinations/${d.slug}`} className="group relative block h-80 overflow-hidden rounded-lg">
+            {destinations.slice(0, 4).map((d, i) => (
+              <Reveal key={d.slug} delay={i * 0.08}>
+              <Link href={`/destinations/${d.slug}`} className="group relative block h-80 overflow-hidden rounded-lg">
                 <Image
                   src={d.image}
                   alt={d.name}
@@ -334,6 +354,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -342,6 +363,7 @@ export default function HomePage() {
       {/* REVIEWS */}
       <section className="bg-slag text-ice py-20" id="reviews">
         <div className="container-edit">
+          <Reveal>
           <ReviewsCarousel
             reviews={reviews}
             header={
@@ -365,19 +387,22 @@ export default function HomePage() {
               </div>
             }
           />
+          </Reveal>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="bg-white py-20" id="faq">
         <div className="container-edit">
-          <FaqSection
-            heading="Common Questions, Answered."
-            subtitle="What travellers usually ask before booking. If yours isn't here, message us and we'll answer directly."
-            items={homeFaqs}
-            whatsappMessage="Hello, I have a question before booking with Badiger Tours & Travels."
-            tone="dark"
-          />
+          <Reveal>
+            <FaqSection
+              heading="Common Questions, Answered."
+              subtitle="What travellers usually ask before booking. If yours isn't here, message us and we'll answer directly."
+              items={homeFaqs}
+              whatsappMessage="Hello, I have a question before booking with Badiger Tours & Travels."
+              tone="dark"
+            />
+          </Reveal>
         </div>
       </section>
 
@@ -390,21 +415,23 @@ export default function HomePage() {
           className="object-cover opacity-35"
         />
         <div className="relative z-10 container-edit text-center">
-          <h2 className="font-oswald uppercase font-bold text-[clamp(1.75rem,5vw,3.5rem)] mb-4">
-            Your Next Journey Is One Message Away.
-          </h2>
-          <p className="text-ice/80 max-w-md mx-auto mb-8 text-sm">
-            Tell us where you&apos;re headed — we&apos;ll get back with a transparent quote.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <ArrowFillButton href="/contact" btnText="Book Your Ride" size="compact" />
-            <ArrowFillButton
-              href={buildWhatsappUrl(defaultEnquiryMessage())}
-              btnText="Chat on WhatsApp"
-              variant="outlineLight"
-              size="compact"
-            />
-          </div>
+          <Reveal>
+            <h2 className="font-oswald uppercase font-bold text-[clamp(1.75rem,5vw,3.5rem)] mb-4">
+              Your Next Journey Is One Message Away.
+            </h2>
+            <p className="text-ice/80 max-w-md mx-auto mb-8 text-sm">
+              Tell us where you&apos;re headed — we&apos;ll get back with a transparent quote.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <ArrowFillButton href="/contact" btnText="Book Your Ride" size="compact" />
+              <ArrowFillButton
+                href={buildWhatsappUrl(defaultEnquiryMessage())}
+                btnText="Chat on WhatsApp"
+                variant="outlineLight"
+                size="compact"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

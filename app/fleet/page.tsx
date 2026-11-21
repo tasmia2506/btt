@@ -4,6 +4,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import ArrowFillButton from "@/components/ui/arrow-fill-button";
 import BookingCta from "@/components/ui/BookingCta";
+import Reveal from "@/components/ui/Reveal";
 import { vehicles } from "@/data/vehicles";
 import { buildWhatsappUrl } from "@/config/business";
 
@@ -18,13 +19,15 @@ export default function FleetPage() {
     <>
       <section className="bg-slag text-ice pt-28 pb-16">
         <div className="container-edit">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Our Fleet", href: "/fleet" }]} />
-          <SectionLabel light>Our Fleet</SectionLabel>
-          <h1 className="heading-huge text-[clamp(2.25rem,6vw,5.5rem)] max-w-3xl">
-            Choose Your
-            <br />
-            Travel Companion.
-          </h1>
+          <Reveal>
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Our Fleet", href: "/fleet" }]} />
+            <SectionLabel light>Our Fleet</SectionLabel>
+            <h1 className="heading-huge text-[clamp(2.25rem,6vw,5.5rem)] max-w-3xl">
+              Choose Your
+              <br />
+              Travel Companion.
+            </h1>
+          </Reveal>
         </div>
       </section>
 
@@ -35,10 +38,10 @@ export default function FleetPage() {
           className={`py-20 scroll-mt-24 ${i % 2 === 0 ? "bg-ice" : "bg-white"}`}
         >
           <div className="container-edit grid lg:grid-cols-2 gap-10 items-center">
-            <div className={`relative h-[300px] sm:h-[400px] ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+            <Reveal className={`relative h-[300px] sm:h-[400px] ${i % 2 === 1 ? "lg:order-2" : ""}`}>
               <Image src={v.image} alt={`${v.name} ${v.category}`} fill className="object-cover" />
-            </div>
-            <div>
+            </Reveal>
+            <Reveal delay={0.1}>
               <p className="font-oswald uppercase text-xs tracking-[0.25em] text-lichen mb-2">
                 {v.category}
               </p>
@@ -107,7 +110,7 @@ export default function FleetPage() {
                   variant="outlineDark"
                 />
               </div>
-            </div>
+            </Reveal>
           </div>
         </section>
       ))}

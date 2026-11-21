@@ -8,6 +8,7 @@ import InfoPills from "@/components/ui/InfoPills";
 import HighlightGrid from "@/components/ui/HighlightGrid";
 import BookingCta from "@/components/ui/BookingCta";
 import FaqSection from "@/components/ui/FaqSection";
+import Reveal from "@/components/ui/Reveal";
 import { vehicles } from "@/data/vehicles";
 import { localSightseeingFaqs } from "@/data/faqs";
 
@@ -62,7 +63,7 @@ export default function LocalSightseeingPage() {
 
       <section className="bg-ice py-16">
         <div className="container-edit">
-          <div className="grid lg:grid-cols-[1fr_300px] gap-5 items-stretch mb-10">
+          <Reveal className="grid lg:grid-cols-[1fr_300px] gap-5 items-stretch mb-10">
             <div className="bg-white border border-stone/15 rounded-2xl p-7 sm:p-9">
               <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-5">
                 Package Snapshot
@@ -83,12 +84,14 @@ export default function LocalSightseeingPage() {
               <p className="font-oswald font-bold text-lichen text-4xl leading-none">₹2,200</p>
               <p className="text-ice/70 text-sm mt-3">Dzire, 8 hrs / 80 km</p>
             </div>
-          </div>
+          </Reveal>
 
-          <h2 className="font-oswald uppercase font-bold text-slag text-2xl mb-6">
-            Local Package Pricing
-          </h2>
-          <PricingTable columns={["Vehicle", "Package", "Extra KM", "Extra Hour"]} rows={rows} />
+          <Reveal>
+            <h2 className="font-oswald uppercase font-bold text-slag text-2xl mb-6">
+              Local Package Pricing
+            </h2>
+            <PricingTable columns={["Vehicle", "Package", "Extra KM", "Extra Hour"]} rows={rows} />
+          </Reveal>
         </div>
       </section>
 

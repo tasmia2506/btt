@@ -7,6 +7,7 @@ import PricingTable from "@/components/pricing/PricingTable";
 import InfoPills from "@/components/ui/InfoPills";
 import HighlightGrid from "@/components/ui/HighlightGrid";
 import BookingCta from "@/components/ui/BookingCta";
+import Reveal from "@/components/ui/Reveal";
 import { vehicles } from "@/data/vehicles";
 
 export const metadata: Metadata = {
@@ -42,7 +43,7 @@ export default function TariffsPage() {
     <>
       <section className="bg-slag text-ice pt-28 pb-16">
         <div className="container-edit grid lg:grid-cols-2 gap-10 items-center">
-          <div>
+          <Reveal>
             <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Tariffs", href: "/tariffs" }]} />
             <SectionLabel light>Tariffs</SectionLabel>
             <h1 className="heading-huge text-[clamp(2.25rem,6vw,5.5rem)] max-w-3xl mb-5">
@@ -55,22 +56,24 @@ export default function TariffsPage() {
                 { icon: ArrowRightLeft, label: "One-Way Drops", accent: true },
               ]}
             />
-          </div>
-          <div className="relative w-full aspect-[1182/887] border border-ice/20">
-            <Image
-              src="/images/tariffs.jpeg"
-              alt="Badiger Tours and Travels cab service poster"
-              fill
-              priority
-              className="object-cover"
-            />
-          </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="relative w-full aspect-[1182/887] border border-ice/20">
+              <Image
+                src="/images/tariffs.jpeg"
+                alt="Badiger Tours and Travels cab service poster"
+                fill
+                priority
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="bg-ice py-16">
         <div className="container-edit">
-          <div className="grid lg:grid-cols-[1fr_300px] gap-5 items-stretch mb-10">
+          <Reveal className="grid lg:grid-cols-[1fr_300px] gap-5 items-stretch mb-10">
             <div className="bg-white border border-stone/15 rounded-2xl p-7 sm:p-9">
               <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-5">
                 Good To Know Before Booking
@@ -95,27 +98,33 @@ export default function TariffsPage() {
               <p className="font-oswald font-bold text-lichen text-4xl leading-none">₹12/km</p>
               <p className="text-ice/70 text-sm mt-3">Outstation round trip, Dzire / Etios</p>
             </div>
-          </div>
+          </Reveal>
 
-          <h2 className="font-oswald uppercase font-bold text-slag text-3xl mb-2">01 / Local Packages</h2>
-          <p className="text-sm text-slag/70 mb-6">8 hours / 80 km, extra km and extra hour billed above the limit.</p>
-          <PricingTable columns={["Vehicle", "Package", "Extra KM", "Extra Hour"]} rows={localRows} />
+          <Reveal>
+            <h2 className="font-oswald uppercase font-bold text-slag text-3xl mb-2">01 / Local Packages</h2>
+            <p className="text-sm text-slag/70 mb-6">8 hours / 80 km, extra km and extra hour billed above the limit.</p>
+            <PricingTable columns={["Vehicle", "Package", "Extra KM", "Extra Hour"]} rows={localRows} />
+          </Reveal>
         </div>
       </section>
 
       <section className="bg-white py-16">
         <div className="container-edit">
-          <h2 className="font-oswald uppercase font-bold text-slag text-3xl mb-2">02 / Outstation Round Trips</h2>
-          <p className="text-sm text-slag/70 mb-6">300 km/day average. Not an all-inclusive package.</p>
-          <PricingTable columns={["Vehicle", "Rate", "Daily Avg", "Bata"]} rows={outstationRows} />
+          <Reveal>
+            <h2 className="font-oswald uppercase font-bold text-slag text-3xl mb-2">02 / Outstation Round Trips</h2>
+            <p className="text-sm text-slag/70 mb-6">300 km/day average. Not an all-inclusive package.</p>
+            <PricingTable columns={["Vehicle", "Rate", "Daily Avg", "Bata"]} rows={outstationRows} />
+          </Reveal>
         </div>
       </section>
 
       <section className="bg-ice py-16">
         <div className="container-edit">
-          <h2 className="font-oswald uppercase font-bold text-slag text-3xl mb-2">03 / One-Way Drops</h2>
-          <p className="text-sm text-slag/70 mb-6">One direction only — not a return trip.</p>
-          <PricingTable columns={["Vehicle", "Rate", "Bata"]} rows={oneWayRows} />
+          <Reveal>
+            <h2 className="font-oswald uppercase font-bold text-slag text-3xl mb-2">03 / One-Way Drops</h2>
+            <p className="text-sm text-slag/70 mb-6">One direction only — not a return trip.</p>
+            <PricingTable columns={["Vehicle", "Rate", "Bata"]} rows={oneWayRows} />
+          </Reveal>
         </div>
       </section>
 

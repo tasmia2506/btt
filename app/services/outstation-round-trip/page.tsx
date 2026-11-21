@@ -8,6 +8,7 @@ import InfoPills from "@/components/ui/InfoPills";
 import HighlightGrid from "@/components/ui/HighlightGrid";
 import BookingCta from "@/components/ui/BookingCta";
 import FaqSection from "@/components/ui/FaqSection";
+import Reveal from "@/components/ui/Reveal";
 import { outstationFaqs } from "@/data/faqs";
 
 export const metadata: Metadata = {
@@ -60,7 +61,7 @@ export default function OutstationRoundTripPage() {
 
       <section className="bg-ice py-16">
         <div className="container-edit">
-          <div className="grid lg:grid-cols-[1fr_300px] gap-5 items-stretch mb-10">
+          <Reveal className="grid lg:grid-cols-[1fr_300px] gap-5 items-stretch mb-10">
             <div className="bg-white border border-stone/15 rounded-2xl p-7 sm:p-9">
               <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-5">
                 Good To Know
@@ -81,12 +82,14 @@ export default function OutstationRoundTripPage() {
               <p className="font-oswald font-bold text-lichen text-4xl leading-none">₹12/km</p>
               <p className="text-ice/70 text-sm mt-3">+ ₹400/day driver bata</p>
             </div>
-          </div>
+          </Reveal>
 
-          <h2 className="font-oswald uppercase font-bold text-slag text-2xl mb-6">
-            Outstation Round-Trip Pricing
-          </h2>
-          <PricingTable columns={["Vehicle", "Rate", "Daily Average", "Bata"]} rows={rows} />
+          <Reveal>
+            <h2 className="font-oswald uppercase font-bold text-slag text-2xl mb-6">
+              Outstation Round-Trip Pricing
+            </h2>
+            <PricingTable columns={["Vehicle", "Rate", "Daily Average", "Bata"]} rows={rows} />
+          </Reveal>
         </div>
       </section>
 

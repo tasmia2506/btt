@@ -6,6 +6,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import BookingForm from "@/components/booking/BookingForm";
 import ArrowFillButton from "@/components/ui/arrow-fill-button";
+import Reveal from "@/components/ui/Reveal";
 import { business, buildWhatsappUrl, defaultEnquiryMessage } from "@/config/business";
 
 const whyReachOut = [
@@ -48,7 +49,7 @@ export default function ContactPage() {
 
       <section className="py-16" id="booking-form">
         <div className="container-edit grid lg:grid-cols-[1.2fr_0.8fr] gap-12">
-          <div className="bg-white p-6 sm:p-10 border border-stone/40 rounded-lg">
+          <Reveal className="bg-white p-6 sm:p-10 border border-stone/40 rounded-lg">
             <h2 className="font-oswald uppercase font-bold text-slag text-xl mb-2">Send Us A Message</h2>
             <p className="text-sm text-slag/60 mb-6">
               Have a question or want to plan your next trip? Fill in the details below.
@@ -61,9 +62,9 @@ export default function ContactPage() {
               </Link>
               .
             </p>
-          </div>
+          </Reveal>
 
-          <div className="flex flex-col gap-6">
+          <Reveal className="flex flex-col gap-6" delay={0.1}>
             <div className="border border-stone/40 bg-white p-6 rounded-lg">
               <p className="font-oswald uppercase text-xs tracking-wide text-stone mb-4">
                 Why Reach Out To Us?
@@ -129,28 +130,30 @@ export default function ContactPage() {
               Submitting the form or messaging us sends an enquiry only. Your trip is confirmed once our
               team responds with availability.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="relative text-ice py-20 text-center">
         <div className="container-edit">
-          <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-3">Ready When You Are</p>
-          <h2 className="font-oswald uppercase font-bold text-2xl sm:text-4xl mb-4">
-            Your Driver Is One Message Away.
-          </h2>
-          <p className="text-ice/75 max-w-md mx-auto mb-8 text-sm">
-            Send the form above, or reach us directly — whichever is easiest for you.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <ArrowFillButton href="#booking-form" btnText="Book Your Ride" size="compact" />
-            <ArrowFillButton
-              href={buildWhatsappUrl(defaultEnquiryMessage())}
-              btnText="Chat on WhatsApp"
-              variant="outlineLight"
-              size="compact"
-            />
-          </div>
+          <Reveal>
+            <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-3">Ready When You Are</p>
+            <h2 className="font-oswald uppercase font-bold text-2xl sm:text-4xl mb-4">
+              Your Driver Is One Message Away.
+            </h2>
+            <p className="text-ice/75 max-w-md mx-auto mb-8 text-sm">
+              Send the form above, or reach us directly — whichever is easiest for you.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <ArrowFillButton href="#booking-form" btnText="Book Your Ride" size="compact" />
+              <ArrowFillButton
+                href={buildWhatsappUrl(defaultEnquiryMessage())}
+                btnText="Chat on WhatsApp"
+                variant="outlineLight"
+                size="compact"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>

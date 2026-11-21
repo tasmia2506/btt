@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import Reveal from "@/components/ui/Reveal";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
@@ -45,34 +46,36 @@ export default function ServicesPage() {
       </section>
 
       <section className="bg-ice py-16">
-        <div className="container-edit flex flex-col gap-10">
+        <div className="container-edit flex flex-col gap-8">
           {services.map((s, i) => (
-            <Link
-              key={s.slug}
-              href={`/services/${s.slug}`}
-              className={`group grid lg:grid-cols-2 gap-0 border border-stone/40 bg-white overflow-hidden ${
-                i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
-              }`}
-            >
-              <div className="relative h-[280px] lg:h-auto">
-                <Image
-                  src={images[s.slug]}
-                  alt={s.title}
-                  fill
-                  className={`object-cover ${imagePosition[s.slug] ?? "object-center"} group-hover:scale-105 transition-transform duration-700`}
-                />
-              </div>
-              <div className="p-8 sm:p-12 flex flex-col justify-center">
-                <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-3">
-                  {s.shortLabel}
-                </p>
-                <h2 className="heading-huge text-slag text-[clamp(1.75rem,4vw,3rem)] mb-4">{s.title}</h2>
-                <p className="text-slag/70 text-sm max-w-md mb-6">{s.description}</p>
-                <span className="inline-flex items-center gap-2 font-oswald uppercase font-semibold text-slag">
-                  {s.cta} <ArrowRight size={16} />
-                </span>
-              </div>
-            </Link>
+            <Reveal key={s.slug} delay={i * 0.08}>
+              <Link
+                href={`/services/${s.slug}`}
+                className={`group grid lg:grid-cols-2 gap-0 bg-white rounded-2xl shadow-sm overflow-hidden ${
+                  i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
+                }`}
+              >
+                <div className="relative h-[320px] lg:h-[420px]">
+                  <Image
+                    src={images[s.slug]}
+                    alt={s.title}
+                    fill
+                    className={`object-cover ${imagePosition[s.slug] ?? "object-center"} group-hover:scale-105 transition-transform duration-700`}
+                  />
+                </div>
+                <div className="p-8 sm:p-12 flex flex-col justify-center">
+                  <p className="font-oswald uppercase text-xs tracking-[0.25em] text-moss mb-3">
+                    {s.shortLabel}
+                  </p>
+                  <h2 className="heading-huge text-slag text-[clamp(1.75rem,4vw,3rem)] mb-4">{s.title}</h2>
+                  <p className="text-slag/70 text-sm max-w-md mb-6">{s.description}</p>
+                  <span className="group/link inline-flex items-center gap-2 font-oswald uppercase font-semibold text-slag hover:underline underline-offset-4 w-fit">
+                    {s.cta}{" "}
+                    <ArrowRight size={16} className="transition-transform group-hover/link:translate-x-1" />
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </section>
